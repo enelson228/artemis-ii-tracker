@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artemis II Mission Tracker</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">ARTEMIS II</div>
+        <nav>
+            <a href="#mission">Mission</a>
+            <a href="#broadcast">Broadcast</a>
+            <a href="#trajectory">Trajectory</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2 class="hero-subtitle">Upcoming Mission</h2>
+            <h1 class="hero-title">ARTEMIS II</h1>
+            
+            <div id="countdown" class="countdown">
+                <!-- Javascript will inject timer here -->
+            </div>
+            
+            <a href="#mission" class="btn-outline">LEARN MORE &rarr;</a>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+        </div>
+    </section>
+
+    <!-- Mission Overview -->
+    <section class="section dark-section" id="mission">
+        <div class="container fade-in">
+            <h2 class="section-title">Mission Overview</h2>
+            <p class="section-desc">Artemis II is the first crewed mission beyond low Earth orbit since Apollo 17 in 1972. It will test the Space Launch System rocket and Orion spacecraft with a four-person crew on a lunar free-return trajectory, paving the way for future lunar surface missions.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-row">
+                    <span class="stat-label">Launch Vehicle</span>
+                    <span class="stat-value">Space Launch System (SLS)</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Spacecraft</span>
+                    <span class="stat-value">Orion Capsule</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Crew</span>
+                    <span class="stat-value">Reid Wiseman, Victor Glover, Christina Koch, Jeremy Hansen</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Mission Duration</span>
+                    <span class="stat-value">~10 Days</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Recovery</span>
+                    <span class="stat-value">Pacific Ocean (U.S. Navy)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Broadcast / Live Feed -->
+    <section class="section" id="broadcast">
+        <div class="container fade-in">
+            <h2 class="section-title">Live Broadcast</h2>
+            <p class="section-desc">Watch the official live stream covering countdown, launch, and mission milestones directly from NASA.</p>
+            
+            <div class="video-container">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/21X5lGlDOfg?autoplay=0&mute=1" title="NASA TV Live" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flight Path / Trajectory -->
+    <section class="section graphic-section" id="trajectory">
+        <div class="container fade-in">
+            <h2 class="section-title">Flight Path</h2>
+            <p class="section-desc">Free return trajectory around the Moon.</p>
+            
+            <div class="trajectory-graphic">
+                <!-- SVG Flight Path -->
+                <svg viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid meet" class="flight-svg">
+                    <!-- Earth -->
+                    <circle cx="100" cy="200" r="40" fill="#1e3a8a" />
+                    <text x="100" y="260" fill="rgba(255,255,255,0.6)" font-size="12" text-anchor="middle" letter-spacing="2">EARTH</text>
+                    
+                    <!-- Moon -->
+                    <circle cx="900" cy="200" r="20" fill="#94a3b8" />
+                    <text x="900" y="260" fill="rgba(255,255,255,0.6)" font-size="12" text-anchor="middle" letter-spacing="2">MOON</text>
+                    
+                    <!-- Path: Earth -> Moon -> Earth via Free Return -->
+                    <!-- Outbound -->
+                    <path class="orbit-path outbound" d="M 120 170 C 400 50, 800 130, 900 170" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-dasharray="6,4" />
+                    <!-- Lunar Flyby -->
+                    <path class="orbit-path flyby" d="M 900 170 C 930 180, 930 220, 900 230" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-dasharray="6,4" />
+                    <!-- Return -->
+                    <path class="orbit-path inbound" d="M 900 230 C 800 270, 400 350, 120 230" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-dasharray="6,4" />
+                    
+                    <!-- Moving Spacecraft Dot -->
+                    <circle class="spacecraft" cx="0" cy="0" r="5" fill="#ffffff">
+                       <animateMotion dur="20s" repeatCount="indefinite" path="M 120 170 C 400 50, 800 130, 900 170 C 930 180, 930 220, 900 230 C 800 270, 400 350, 120 230" />
+                    </circle>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Artemis II Mission Tracker &bull; Design Inspired by SpaceX</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
